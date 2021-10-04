@@ -28,6 +28,7 @@ DATABASES = {
         'USER': 'mysql',
         'PASSWORD': 'mysql'
     }
+}
 ```
 
 ### Resources
