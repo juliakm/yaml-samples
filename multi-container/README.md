@@ -2,7 +2,7 @@
 
 Sample code to build three networked containers - Python, MySQL, and Postgres as part of a Django app. Working scenario is that you have a legacy app with user data saved in MySQL that your Django app needs to access and test against.
 
-This example expands on the [Quickstart: Compose and Django tutorial in Docker Docs.](https://docs.docker.com/samples/django/)
+This example expands on [Quickstart: Compose and Django tutorial in Docker Docs.](https://docs.docker.com/samples/django/)
 
 @TODO: Update the example to build with a Azure DevOps YAML pipeline in addition to the `docker-compose.yml` file.
 
