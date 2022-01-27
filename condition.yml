@@ -1,0 +1,20 @@
+name: $(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+variables:
+  ${{ if contains(variables['Build.SourceBranch'],'master/') }}:
+    BranchMoniker: 'master'
+  ${{ if contains(variables['Build.SourceBranch'], 'TST/') }}:
+    BranchMoniker: 'TST'
+  ${{ if and(not(contains(variables['Build.SourceBranch'], 'TST/')), not(contains(variables['Build.SourceBranch'],'vNext/'))) }}:
+    BranchMoniker: 'vCurrent'  #default value for BranchMoniker, currently there isn't an else for an if and you can't overwrite a variable
+
+stages:
+  - stage: ProduceArtifact
+    jobs:
+      - template: 'ProduceArtifact.yml'
+        parameters:
+          BuildConfiguration: debug
+          BuildPlatform: any cpu
+          MoveDacPacsToTDrive: false
+          system.debug: true
+          BranchMoniker: ${{ variables['BranchMoniker'] }} 
