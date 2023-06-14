@@ -1,0 +1,6 @@
+extends:
+  template: template.yml
+parameters:
+  - script: echo foo
+  - script: echo bar
+

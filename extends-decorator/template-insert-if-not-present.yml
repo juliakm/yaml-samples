@@ -1,0 +1,16 @@
+# scenario: check if virus scanning is there, insert if not
+
+parameters:
+- name: mySteps
+  type: stepList
+  default: []
+
+jobs:
+- jobs:
+    steps: 
+    - ${{ each step in parameters.mySteps }}:
+        - ${{ step }}
+    - ${{ if not(contains(parameters.mySteps.*.task, 'MyVirusScanner@1')) }}:
+      - task: MyVirusScanner@1
+        displayName: Virus scanner injected from template
+      
